@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GE ELEC 6 · Reading Visual Arts E-Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=Nunito:wght@300;400;600;700;800&family=Dancing+Script:wght@500;700&family=Special+Elite&family=Satisfy&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+/* ─────────────── RESET & ROOT ─────────────── */
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --p1:#3B1470;--p2:#5B2D8E;--p3:#7B4AB8;--p4:#A57DD4;--p5:#C9A8E8;--p6:#E8D9F7;--p7:#F5EFFF;
+  --gold:#C9A84C;--gold2:#E8C97A;--gold3:#FFF0B3;
+  --paper:#F5EDD8;--paper2:#EDE0C4;--paper3:#F9F3E8;
+  --ink:#2C1654;--ink2:#4A2D80;--dark:#12062A;
+  --washi1:rgba(180,140,220,0.45);
+  --washi2:rgba(201,168,76,0.5);
+  --washi3:rgba(240,180,200,0.5);
+}
+[data-theme="maroon"]{
+  --p1:#3D0000;--p2:#6B0F0F;--p3:#8B2020;--p4:#A84040;--p5:#C49A7A;--p6:#EDD9C0;--p7:#F7EFE0;
+  --gold:#C9A84C;--gold2:#E8C97A;--gold3:#FFF0B3;
+  --paper:#F5EDD8;--paper2:#EDE0C4;--paper3:#F9F3E8;
+  --ink:#2A0A0A;--ink2:#5C1010;--dark:#130000;
+  --washi1:rgba(139,32,32,0.35);
+  --washi2:rgba(201,168,76,0.5);
+  --washi3:rgba(180,100,50,0.35);
+}
+
+/* ── THEME TOGGLE ── */
+.theme-toggle{display:flex;align-items:center;gap:8px;margin-left:16px;flex-shrink:0}
+.theme-toggle-label{font-family:'Special Elite',cursive;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(201,169,232,.55);transition:color .3s;white-space:nowrap}
+[data-theme="maroon"] .theme-toggle-label{color:rgba(196,154,122,.65)}
+.toggle-track{position:relative;width:42px;height:22px;background:rgba(255,255,255,.12);border-radius:11px;cursor:pointer;border:1px solid rgba(255,255,255,.15);transition:background .4s,border-color .4s;flex-shrink:0}
+.toggle-track:hover{background:rgba(255,255,255,.18)}
+.toggle-thumb{position:absolute;top:3px;left:3px;width:14px;height:14px;border-radius:50%;background:var(--p5);transition:transform .35s cubic-bezier(.34,1.56,.64,1),background .4s;box-shadow:0 1px 4px rgba(0,0,0,.35)}
+[data-theme="maroon"] .toggle-thumb{transform:translateX(20px);background:var(--gold2)}
+.toggle-icon{font-size:11px;line-height:1}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{font-family:'Nunito',sans-serif;background:var(--paper);overflow-x:hidden;cursor:none;min-height:100vh}
+
+/* ─────────────── CUSTOM CURSOR ─────────────── */
+#cur,#cur2{position:fixed;border-radius:50%;pointer-events:none;z-index:99999;top:0;left:0;transform:translate(-50%,-50%)}
+#cur{width:12px;height:12px;background:var(--p2);transition:transform .1s,background .2s,width .2s,height .2s}
+#cur2{width:32px;height:32px;border:1.5px solid var(--p4);transition:all .22s ease;opacity:.6}
+body:has(a:hover) #cur,body:has(button:hover) #cur,body:has(.item:hover) #cur,body:has(#coverCard:hover) #cur,body:has(.photo-card:hover) #cur,body:has(.media-trigger:hover) #cur,body:has(.view-img-btn:hover) #cur {background:var(--gold);width:16px;height:16px}
+body:has(a:hover) #cur2,body:has(button:hover) #cur2,body:has(.item:hover) #cur2,body:has(#coverCard:hover) #cur2,body:has(.photo-card:hover) #cur2,body:has(.media-trigger:hover) #cur2,body:has(.view-img-btn:hover) #cur2 {width:48px;height:48px;border-color:var(--gold)}
+
+/* ─────────────── LOADER ─────────────── */
+#loader{position:fixed;inset:0;z-index:99998;background:var(--dark);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;transition:opacity .9s,visibility .9s}
+#loader.out{opacity:0;visibility:hidden}
+.ld-icon svg {width: 64px; height: 64px; stroke: var(--gold); animation:spin 2s linear infinite;}
+@keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+.ld-title{font-family:'Caveat',cursive;font-size:26px;color:var(--p5);letter-spacing:4px}
+.ld-bar{width:200px;height:2px;background:rgba(255,255,255,.1);border-radius:2px;overflow:hidden}
+.ld-fill{height:100%;background:linear-gradient(90deg,var(--p4),var(--gold));animation:fill 2s ease forwards}
+@keyframes fill{from{width:0}to{width:100%}}
+
+/* ─────────────── NAVIGATION ─────────────── */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:12px 40px;display:flex;justify-content:space-between;align-items:center;background:rgba(18,6,42,.88);backdrop-filter:blur(14px);border-bottom:1px solid rgba(165,125,212,.22);transition:transform .4s}
+nav.hide{transform:translateY(-100%)}
+.nb{font-family:'Caveat',cursive;font-size:20px;color:var(--p5);text-decoration:none;display:flex;align-items:center;gap:10px}
+.nb em{font-family:'Special Elite',cursive;font-size:11px;color:var(--gold);letter-spacing:2px;font-style:normal}
+.nl{display:flex;gap:4px;list-style:none}
+.nl a{font-size:10px;letter-spacing:2.5px;color:rgba(201,169,232,.65);text-decoration:none;text-transform:uppercase;padding:7px 12px;border-radius:20px;transition:all .3s;font-family:'Nunito',sans-serif;font-weight:700}
+.nl a:hover,.nl a.on{background:var(--p2);color:#fff}
+
+/* ─────────────── SECTION 1: HERO DESK ─────────────── */
+#desk{min-height:100vh;position:relative;display:flex;align-items:center;justify-content:center;overflow:visible;padding:100px 80px 80px;background:radial-gradient(ellipse 60% 50% at 50% 0%,rgba(91,45,142,.18) 0%,transparent 70%),var(--paper)}
+#desk::before{content:'';position:absolute;inset:0;opacity:.35;pointer-events:none;z-index:0;background-image:repeating-linear-gradient(45deg,rgba(180,150,100,.12) 0,rgba(180,150,100,.12) 1px,transparent 0,transparent 50%),repeating-linear-gradient(-45deg,rgba(180,150,100,.12) 0,rgba(180,150,100,.12) 1px,transparent 0,transparent 50%);background-size:14px 14px}
+
+.desk-stage{position:relative;width:min(960px,96vw);min-height:640px;z-index:1;overflow:visible}
+.desk-stage .item { will-change: transform; }
+
+.cover-main{position:relative;background:linear-gradient(160deg,#F7F0FF 0%,#EFE3FF 100%);border-radius:14px;padding:36px 32px 32px;box-shadow:0 20px 60px rgba(58,26,92,.22),0 4px 16px rgba(58,26,92,.12),inset 0 1px 0 rgba(255,255,255,.8);border:1px solid rgba(201,169,232,.35);width:380px;margin:0 auto;z-index:50;animation:riseIn .9s cubic-bezier(.34,1.56,.64,1) .3s both; transition: box-shadow 0.3s;}
+@keyframes riseIn{from{opacity:0;transform:translateY(50px) scale(.95)}to{opacity:1;transform:translateY(0) scale(1)}}
+.cover-main::before{content:'';position:absolute;top:14px;left:14px;width:28px;height:28px;border-top:2px solid var(--gold);border-left:2px solid var(--gold);border-radius:3px 0 0 0;opacity:.75;pointer-events:none}
+.cover-main::after{content:'';position:absolute;bottom:14px;right:14px;width:28px;height:28px;border-bottom:2px solid var(--gold);border-right:2px solid var(--gold);border-radius:0 0 3px 0;opacity:.75;pointer-events:none}
+.cover-washi{position:absolute;top:-2px;left:0;right:0;height:22px;border-radius:14px 14px 0 0;background:repeating-linear-gradient(90deg,rgba(165,125,212,.5) 0,rgba(165,125,212,.5) 10px,rgba(201,169,232,.3) 10px,rgba(201,169,232,.3) 20px);z-index:11}
+
+.pin{position:absolute;width:19px;height:19px;border-radius:50%;z-index:30;box-shadow:0 2px 7px rgba(0,0,0,.4),inset 0 -2px 4px rgba(0,0,0,.25),inset 0 2px 4px rgba(255,255,255,.4);cursor:pointer;transition:transform .2s}
+.pin:hover{transform:scale(1.2)}
+.pin::after{content:'';position:absolute;bottom:-8px;left:50%;transform:translateX(-50%);width:4px;height:9px;background:rgba(0,0,0,.22);border-radius:0 0 2px 2px}
+.pp{background:radial-gradient(circle at 35% 35%,var(--p4),var(--p1))}
+.pg{background:radial-gradient(circle at 35% 35%,var(--gold2),var(--gold))}
+
+.sch-name{font-family:'Special Elite',cursive;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--p2);text-align:center;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid rgba(91,45,142,.12); position: relative; z-index: 5;}
+.gec-big{font-family:'Caveat',cursive;font-size:62px;font-weight:700;line-height:.85;color:var(--p1);text-align:center;display:block;text-shadow:3px 3px 0 rgba(91,45,142,.1); position: relative; z-index: 5;}
+.eport{font-family:'Dancing Script',cursive;font-size:26px;color:var(--p3);text-align:center;display:block; position: relative; z-index: 5;}
+.art-pill{display:block;margin:12px auto 22px;width:fit-content;background:linear-gradient(135deg,var(--p1),var(--p3));color:#fff;font-family:'Playfair Display',serif;font-size:12px;font-weight:700;letter-spacing:4px;text-transform:uppercase;padding:8px 22px;border-radius:6px;box-shadow:0 4px 14px rgba(91,45,142,.35); position: relative; z-index: 5;}
+.stu-photo{width:110px;height:110px;border-radius:50%;background:linear-gradient(135deg,var(--p7),var(--p6));border:3px dashed var(--p4);box-shadow:0 5px 18px rgba(91,45,142,.2),0 0 0 5px rgba(255,255,255,.8);margin:0 auto 14px;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;cursor:pointer;transition:transform .3s,border-color .3s,box-shadow .3s; z-index: 5; gap:4px;}
+.stu-photo:hover{transform:scale(1.08) rotate(-3deg);border-color:var(--p2);box-shadow:0 8px 24px rgba(91,45,142,.35),0 0 0 5px rgba(255,255,255,.9)}
+.stu-photo img{width:100%;height:100%;object-fit:cover;border-radius:50%;position:absolute;inset:0;z-index:10}
+.stu-photo::after{content:none}
+.stu-photo svg {width: 36px; height: 36px; stroke: var(--p3);}
+.stu-photo-hint{font-family:'Caveat',cursive;font-size:10px;color:var(--p4);letter-spacing:1px;position:relative;z-index:2;text-align:center;line-height:1.2}
+.stu-name{font-family:'Playfair Display',serif;font-size:18px;font-weight:900;color:var(--p1);text-align:center;display:block; position: relative; z-index: 5;}
+.stu-sec{font-family:'Caveat',cursive;font-size:15px;color:var(--p3);text-align:center;display:block; position: relative; z-index: 5;}
+.stu-email{font-size:10px;color:var(--p4);text-align:center;display:block;margin-top:5px; position: relative; z-index: 5;}
+.sem-badge{display:block;width:fit-content;margin:14px auto 0;background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--p1);font-size:9px;letter-spacing:2.5px;font-weight:800;text-transform:uppercase;padding:6px 16px;border-radius:30px;box-shadow:0 2px 10px rgba(201,168,76,.4); position: relative; z-index: 5;}
+
+/* Floating Desk Items */
+.item{position:absolute;transition:transform .35s cubic-bezier(.34,1.56,.64,1),box-shadow .35s,z-index 0s;cursor:pointer}
+.item:hover{z-index: 60 !important;}
+.polaroid{background:#fff;padding:11px 11px 38px;box-shadow:3px 3px 14px rgba(0,0,0,.28);border-radius:2px}
+.pol-img{width:115px;height:95px;display:flex;align-items:center;justify-content:center;font-size:44px;border-radius:1px;position:relative;overflow:hidden}
+.pol-img svg {width: 42px; height: 42px; stroke: var(--ink2);}
+.pol-cap{position:absolute;bottom:8px;left:0;right:0;text-align:center;font-family:'Caveat',cursive;font-size:13px;color:#555}
+.stickyN{border-radius:3px;padding:16px 18px;box-shadow:3px 3px 12px rgba(0,0,0,.2),inset 0 -2px 5px rgba(0,0,0,.05)}
+.stickyN::before{content:'';display:block;height:22px;margin:-16px -18px 10px;border-radius:3px 3px 0 0;background:rgba(0,0,0,.06)}
+.sn-label{font-family:'Caveat',cursive;font-size:10px;letter-spacing:3px;opacity:.45;text-transform:uppercase;display:block;margin-bottom:5px}
+.sn-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;line-height:1.25;margin-bottom:6px}
+.sn-body{font-size:11px;line-height:1.7;opacity:.75;font-family:'Nunito',sans-serif}
+.stamp-box{border:2.5px solid currentColor;padding:6px 14px;font-family:'Special Elite',cursive;font-size:10px;letter-spacing:3px;text-transform:uppercase;border-radius:3px;opacity:.65;display:inline-block;transform:rotate(-6deg)}
+.tag-label{background:var(--gold3);border:1px solid var(--gold2);font-family:'Caveat',cursive;font-size:13px;color:#5a3a00;padding:6px 14px;border-radius:2px;display:flex;align-items:center;gap:6px;box-shadow:2px 2px 6px rgba(0,0,0,.18)}
+.tag-label::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--gold);flex-shrink:0}
+.date-card{background:var(--p2);color:#fff;border-radius:8px;padding:14px 18px;box-shadow:4px 4px 14px rgba(58,26,92,.4);text-align:center}
+.date-month{font-family:'Special Elite',cursive;font-size:10px;letter-spacing:3px;opacity:.7;text-transform:uppercase}
+.date-num{font-family:'Caveat',cursive;font-size:42px;font-weight:700;line-height:1}
+.date-year{font-family:'Caveat',cursive;font-size:16px;opacity:.8}
+.wash{position:absolute;pointer-events:none;z-index:25}
+.wash-h{height:20px;border-radius:2px}
+
+/* Desk Illustrations */
+.coffee-cup { width: 70px; height: 70px; background: #fff; border-radius: 50%; box-shadow: 3px 5px 12px rgba(0,0,0,0.15); display: flex; align-items: center; justify-content: center; }
+.coffee-inner { width: 56px; height: 56px; background: #5c3a21; border-radius: 50%; box-shadow: inset 2px 4px 8px rgba(0,0,0,0.6); position: relative; }
+.coffee-foam { position: absolute; width: 16px; height: 6px; background: rgba(255,255,255,0.15); border-radius: 50%; top: 12px; left: 16px; transform: rotate(-20deg); }
+
+.char-cover { position: absolute; z-index: 5; pointer-events: none; filter: drop-shadow(4px 4px 15px rgba(58,26,92,0.25)); animation: floatCam 6s ease-in-out infinite; }
+.char-cover img { width: 100%; height: auto; object-fit: contain; }
+
+.scroll-hint{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;opacity:.55;animation:bop 2.2s ease-in-out infinite; z-index: 10;}
+@keyframes bop{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-9px)}}
+.sh-txt{font-family:'Caveat',cursive;font-size:13px;color:var(--p3);letter-spacing:2px}
+.sh-arr{width:18px;height:18px;border-right:2px solid var(--p3);border-bottom:2px solid var(--p3);transform:rotate(45deg)}
+
+/* ─────────────── CSS GRID LAYOUT SYSTEM ─────────────── */
+section.content-section {
+  padding: 80px 20px 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.page-header { max-width: 1100px; margin: 0 auto 30px; position: relative; padding: 0 20px; z-index: 20;}
+.page-header-label { font-family: 'Special Elite', cursive; font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: var(--p3); margin-bottom: 10px; display: flex; align-items: center; gap: 12px; }
+.page-header-label::before { content: ''; width: 28px; height: 1px; background: var(--p3); }
+.page-header-title { font-family: 'Playfair Display', serif; font-weight: 900; font-size: clamp(3rem, 6vw, 5rem); color: var(--p1); line-height: 1.0; }
+.page-header-title em { font-style: italic; color: var(--p3); }
+.page-header-sub { font-family: 'Caveat', cursive; font-size: 22px; color: var(--ink2); margin-top: 12px; }
+
+/* The Grid Board */
+.photo-board {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 30px; 
+  align-items: start; 
+  position: relative;
+  z-index: 20;
+  padding: 0 20px;
+}
+
+/* Grid Character Container */
+.char-grid-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end; 
+  position: relative;
+  height: 100%;
+}
+.floating-char {
+  width: 100%;
+  max-width: 320px; 
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(5px 5px 20px rgba(58,26,92,0.3));
+  animation: floatCam 5s ease-in-out infinite;
+}
+@keyframes floatCam { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+
+/* Dreamy Aesthetic Elements */
+.aesthetic-decor {
+  position: absolute; pointer-events: none; z-index: 5;
+  animation: floatDecor 6s ease-in-out infinite alternate; opacity: 0.6;
+}
+@keyframes floatDecor {
+  0% { transform: translateY(0) rotate(0deg); }
+  100% { transform: translateY(-15px) rotate(5deg); }
+}
+
+/* Photo Cards inside Grid */
+.photo-card {
+  position: relative; padding: 30px 28px; border-radius: 4px;
+  box-shadow: 2px 4px 16px rgba(58,26,92,.15), inset 0 1px 0 rgba(255,255,255,.5);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, z-index 0s;
+  height: 100%; 
+  display: flex; flex-direction: column;
+}
+.photo-card:hover { transform: translateY(-8px) scale(1.02) !important; box-shadow: 10px 15px 30px rgba(58,26,92,0.25), inset 0 1px 0 rgba(255,255,255,0.5); z-index: 50 !important; }
+.photo-card:hover .pin { transform: scale(1.2); }
+
+/* Grid Spans */
+.span-4 { grid-column: span 4; }
+.span-5 { grid-column: span 5; }
+.span-6 { grid-column: span 6; }
+.span-7 { grid-column: span 7; }
+.span-8 { grid-column: span 8; }
+.span-12 { grid-column: span 12; }
+
+/* Themes */
+.theme-cream { background: #F7F0FF; border: 1px solid rgba(201,169,232,.3); }
+.theme-white { background: #ffffff; border: 1px solid rgba(201,169,232,.2); }
+.theme-gold { background: linear-gradient(135deg, #fff8d6, #fff0b0); border: 1px solid rgba(232,201,122,.4); }
+.theme-dark { background: linear-gradient(160deg, var(--ink2), var(--dark)); color: #fff; }
+
+.pc-tag { font-family: 'Special Elite', cursive; font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--p3); margin-bottom: 12px; border-bottom: 1px solid rgba(165,125,212,.3); padding-bottom: 8px; }
+.pc-tag-inv { color: var(--gold2); border-color: rgba(232,201,122,.2); }
+.pc-title { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: var(--p1); line-height: 1.25; margin-bottom: 14px; }
+.pc-title-inv { color: #fff; }
+.pc-title em { font-style: italic; color: var(--p3); }
+.pc-title-inv em { color: var(--gold); }
+.pc-body { font-family: 'Nunito', sans-serif; font-size: 13px; color: var(--ink); line-height: 1.8; flex-grow: 1;}
+.pc-body-inv { color: rgba(255,255,255,.8); }
+.pc-body p { margin-bottom: 12px; }
+.pc-body ul { margin-left: 20px; margin-bottom: 12px; color: var(--ink2);}
+.pc-body li { margin-bottom: 6px; }
+.pc-body-inv ul { color: rgba(255,255,255,.7); }
+.pc-body strong { color: var(--p1); font-weight: 800; }
+.pc-body-inv strong { color: var(--gold2); }
+.card-divider { border: 0; height: 1px; background: rgba(165,125,212,.2); margin: 15px 0; }
+.theme-dark .card-divider { background: rgba(232,201,122,.2); }
+
+.def-list { display:flex; flex-direction:column; gap:12px; margin-top:10px; }
+.def-item { display:grid; grid-template-columns:100px 1fr; gap:14px; align-items: start; }
+.def-term { font-family:'Playfair Display',serif; font-style:italic; font-weight:700; font-size:16px; color:var(--p2); text-align:right; border-right:2px solid var(--gold); padding-right:12px; line-height: 1.3;}
+.def-def { font-size:12px; color:var(--ink); line-height:1.6; }
+
+.r1 { transform:rotate(-2.2deg); } .r2 { transform:rotate(1.5deg); } .r3 { transform:rotate(-0.8deg); }
+.r4 { transform:rotate(2.5deg); } .r5 { transform:rotate(-1.4deg); } .r6 { transform:rotate(0.9deg); }
+
+.tape { display:block; width:60px; height:18px; background:var(--washi1); position:absolute; left:50%; transform:translateX(-50%); top:-9px; z-index:8; border-radius: 2px;}
+.badge-row { display:flex; gap:8px; flex-wrap:wrap; margin-top:16px; }
+.badge { font-family:'Special Elite',cursive; font-size:9px; letter-spacing:2px; text-transform:uppercase; padding:6px 14px; border-radius: 20px; border:1px solid currentColor; font-weight:600; }
+.badge-red { color:#c0392b; border-color:rgba(192,57,43,.4); background:rgba(192,57,43,.05); }
+.badge-blue { color:#2980b9; border-color:rgba(41,128,185,.4); background:rgba(41,128,185,.05); }
+.badge-green { color:#27ae60; border-color:rgba(39,174,96,.4); background:rgba(39,174,96,.05); }
+
+.conclusion-pull { font-family:'Playfair Display',serif; font-style:italic; font-size:20px; color:#fff; line-height:1.6; border-left:3px solid var(--gold); padding:10px 0 10px 20px; margin:16px 0; }
+
+.reveal { opacity:0; transform:translateY(30px) rotate(var(--rot, 0deg)); transition: opacity .7s ease, transform .7s cubic-bezier(.16,1,.3,1); }
+.reveal.visible { opacity:1; transform:translateY(0) rotate(var(--rot, 0deg)); }
+
+/* ─────────────── SVG ICONS & MEDIA TRIGGERS ─────────────── */
+.trigger-ico { width: 34px; height: 34px; stroke: var(--p2); margin-bottom: 12px; display: block; margin-left: auto; margin-right: auto; }
+
+.media-trigger {
+  position: relative; background: #fff; border-radius: 4px; padding: 20px 24px 28px;
+  box-shadow: 2px 5px 15px rgba(0,0,0,0.15), inset 0 0 0 1px rgba(91,45,142,0.1);
+  cursor: pointer; z-index: 90; transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s;
+  text-decoration: none; color: var(--ink); display: block; min-width: 140px;
+}
+.media-trigger:hover {
+  transform: translateY(-10px) rotate(0deg) scale(1.05) !important;
+  box-shadow: 5px 15px 30px rgba(58,26,92,0.25), inset 0 0 0 1px rgba(91,45,142,0.1); z-index: 110;
+}
+.media-trigger::before {
+  content: ''; position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+  width: 30px; height: 40px; background: rgba(255, 255, 255, 0.9);
+  border: 2px solid #ccc; border-radius: 10px; border-bottom: none;
+  clip-path: polygon(0 0, 100% 0, 100% 50%, 80% 50%, 80% 100%, 20% 100%, 20% 50%, 0 50%); z-index: 5;
+}
+.pdf-text { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 16px; color: var(--p1); text-align: center; line-height: 1.2; }
+.pdf-hint { 
+  position: absolute; bottom: -12px; right: -15px; background: var(--gold2); color: var(--p1); 
+  font-family: 'Caveat', cursive; font-size: 14px; font-weight: 700;
+  padding: 4px 12px; border-radius: 2px; transform: rotate(10deg); box-shadow: 2px 2px 8px rgba(0,0,0,0.2); pointer-events: none;
+}
+
+.doc-cluster { grid-column: 1 / -1; display: flex; gap: 20px; justify-content: center; margin-top: 10px; flex-wrap: wrap; align-items: flex-end; }
+
+/* ─────────────── MODAL LIGHTBOXES ─────────────── */
+.pdf-modal {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(18,6,42,0.85); backdrop-filter: blur(10px);
+  z-index: 10000; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.4s ease;
+}
+.pdf-modal.open { opacity: 1; pointer-events: all; }
+.pdf-modal-content {
+  width: 85%; height: 85%; background: var(--paper3); border-radius: 8px; position: relative; padding: 45px 20px 20px;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.6); transform: translateY(30px); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.pdf-modal.open .pdf-modal-content { transform: translateY(0); }
+
+#img-modal .pdf-modal-content {
+  width: auto; height: auto; max-height: 90%; max-width: 90%; background: transparent; box-shadow: none; padding: 0; display: flex; align-items: center; justify-content: center;
+}
+.img-modal-graphic { max-width: 100%; max-height: 90vh; border-radius: 8px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); border: 4px solid #fff; }
+.pdf-close {
+  position: absolute; top: 12px; right: 18px; font-size: 24px; font-family: 'Nunito', sans-serif; font-weight: 800;
+  background: none; border: none; color: var(--p2); cursor: pointer; transition: transform 0.2s, color 0.2s; z-index: 100;
+}
+.pdf-close:hover { transform: scale(1.2) rotate(90deg); color: #c0392b; }
+#img-modal .pdf-close { top: -30px; right: -30px; color: #fff; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
+.pdf-frame { width: 100%; height: 100%; border: 1px solid rgba(165,125,212,0.3); border-radius: 4px; background: #fff; }
+
+
+/* ─────────────── SPECIFIC SECTIONS ─────────────── */
+#photography { background: radial-gradient(ellipse at bottom right, rgba(91,45,142,0.1) 0%, transparent 60%), linear-gradient(180deg, var(--paper) 0%, #e8dec5 100%); }
+.tri-diagram { display:flex; justify-content:center; margin:20px 0 15px; transition: transform 0.4s ease; }
+.photo-card:hover .tri-diagram { transform: scale(1.05); }
+
+#velasco { background: radial-gradient(ellipse at top left, rgba(91,45,142,0.1) 0%, transparent 60%), linear-gradient(180deg, #e8dec5 0%, var(--paper) 100%); }
+.quote-block { background: rgba(201,168,76,0.1); border-left: 4px solid var(--gold); padding: 16px 24px; font-family: 'Special Elite', cursive; color: var(--p2); margin: 20px 0; line-height: 1.6; font-size: 14px; }
+.character-square {
+  width: 300px; height: 300px; background: var(--p6); border: 10px solid #fff; border-radius: 8px; 
+  box-shadow: 4px 6px 15px rgba(58,26,92,0.25); transform: rotate(3deg); overflow: hidden; position: relative;
+  display: flex; align-items: center; justify-content: center; margin-top: 10px;
+}
+.character-square img { width: 100%; height: 100%; object-fit: cover; }
+
+#assessments { background: radial-gradient(ellipse at top right, rgba(201,168,76,0.1) 0%, transparent 70%), linear-gradient(180deg, var(--paper) 0%, #e8e3f0 100%); }
+.view-img-btn {
+  background: var(--p1); color: #fff; border: none; padding: 8px 16px; border-radius: 4px;
+  font-family: 'Nunito', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+  cursor: pointer; margin-top: 14px; transition: background 0.3s, transform 0.2s;
+}
+.view-img-btn:hover { background: var(--p3); transform: translateY(-2px); }
+.theme-dark .view-img-btn { background: var(--gold); color: var(--p1); }
+.theme-dark .view-img-btn:hover { background: var(--gold2); }
+.highlight-qa { background: rgba(91,45,142,0.05); border-left: 3px solid var(--p3); padding: 16px; margin: 14px 0; border-radius: 0 4px 4px 0; }
+.qa-inv { background: rgba(255,255,255,0.05); border-color: var(--gold); }
+.qa-item { margin-bottom: 12px; font-family: 'Nunito', sans-serif; font-size: 13px; line-height: 1.6;}
+.qa-item:last-child { margin-bottom: 0; }
+.q-label { font-weight: 800; color: var(--p2); }
+.a-label { font-weight: 800; color: var(--gold); margin-left: 10px;}
+.qa-inv .q-label { color: var(--gold2); }
+.qa-inv .a-label { color: #fff; }
+.split-body { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+
+#experience { background: radial-gradient(ellipse at bottom left, rgba(91,45,142,0.1) 0%, transparent 70%), linear-gradient(180deg, #e8e3f0 0%, #f4ebd8 100%); }
+#feedback { background: radial-gradient(ellipse at bottom right, rgba(232,201,122,0.15) 0%, transparent 70%), linear-gradient(180deg, #f4ebd8 0%, var(--paper) 100%); }
+
+
+/* ─────────────── FOOTER ─────────────── */
+footer{background:var(--dark);border-top:1px solid rgba(165,125,212,.15);padding:50px;text-align:center}
+.ft-logo{font-family:'Caveat',cursive;font-size:36px;color:var(--p5);display:block;margin-bottom:8px}
+.ft-div{width:60px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:20px auto}
+.ft-sub{font-size:11px;letter-spacing:3.5px;color:rgba(201,169,232,.35);text-transform:uppercase}
+
+/* ─────────────── STAR RATING WIDGET ─────────────── */
+.star-rating-widget {
+  margin-top: 20px; padding: 20px 22px; background: rgba(255,255,255,.55);
+  border-radius: 10px; border: 1px solid rgba(201,168,76,.3); 
+  box-shadow: 0 2px 12px rgba(58,26,92,.06); display: inline-block;
+}
+.srw-label {
+  font-family: 'Special Elite', cursive; font-size: 10px; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--p3); margin-bottom: 12px;
+}
+.srw-stars { display: flex; gap: 6px; align-items: center; }
+.srw-star {
+  background: none; border: none; cursor: pointer; font-size: 34px; line-height: 1;
+  color: #d9ccc0; transition: color .18s, transform .18s, text-shadow .18s;
+  padding: 0 2px; position: relative;
+}
+.srw-star.hovered, .srw-star.selected { color: var(--gold); text-shadow: 0 0 12px rgba(201,168,76,.5); }
+.srw-star:hover { transform: scale(1.25) rotate(-5deg); }
+.srw-star.selected { transform: scale(1.15); }
+.srw-star.pop { animation: starPop .35s cubic-bezier(.34,1.56,.64,1) forwards; }
+@keyframes starPop { 0%{transform:scale(1.15)} 50%{transform:scale(1.5) rotate(10deg)} 100%{transform:scale(1.15)} }
+.srw-caption {
+  margin-top: 10px; font-family: 'Caveat', cursive; font-size: 15px;
+  color: var(--ink2); letter-spacing: 1px; min-height: 22px; transition: color .3s;
+}
+@keyframes srwShake {
+  0%,100%{transform:translateX(0)} 15%{transform:translateX(-6px)} 30%{transform:translateX(6px)} 45%{transform:translateX(-5px)} 60%{transform:translateX(5px)} 75%{transform:translateX(-3px)} 90%{transform:translateX(3px)}
+}
+.srw-shake { animation: srwShake .5s ease; }
+
+@media(max-width:900px){
+  section.content-section { padding: 80px 20px 80px; } 
+  .photo-board { grid-template-columns: 1fr; }
+  .span-4, .span-5, .span-6, .span-7, .span-8, .span-12 { grid-column: 1 / -1 !important; }
+  .char-grid-wrapper { padding: 20px 0; }
+  .floating-char { width: 220px !important; opacity: 0.8; } 
+  .pdf-modal-content { width: 95%; height: 90%; }
+  #img-modal .pdf-close { top: 10px; right: 10px; color: var(--p2); text-shadow: none; background: #fff; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center;}
+  .split-body { grid-template-columns: 1fr; }
+  .aesthetic-decor { display: none; }
+  #desk { padding: 100px 20px 60px; }
+}
+</style>
+</head>
+<body>
+
+<div id="cur"></div>
+<div id="cur2"></div>
+
+<div id="loader">
+  <div class="ld-icon">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+      <circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c1.38 0 2.5-1.12 2.5-2.5 0-.61-.24-1.16-.63-1.57-.35-.37-.57-.88-.57-1.43 0-1.1.9-2 2-2h1.5c2.76 0 5-2.24 5-5 0-4.42-4.48-8-10-8z"/>
+    </svg>
+  </div>
+  <div class="ld-title">Loading Portfolio…</div>
+  <div class="ld-bar"><div class="ld-fill"></div></div>
+</div>
+
+<div id="pdf-modal" class="pdf-modal">
+  <div class="pdf-modal-content">
+    <button class="pdf-close" id="closePdfBtn" title="Close Document">✕</button>
+    <iframe class="pdf-frame" src="sample.pdf" title="Group Discussion Paper"></iframe>
+  </div>
+</div>
+
+<div id="img-modal" class="pdf-modal">
+  <div class="pdf-modal-content">
+    <button class="pdf-close" id="closeImgBtn" title="Close Image">✕</button>
+    <img src="reflection_paper.jpg" id="modalDynamicImg" alt="Document Preview" class="img-modal-graphic">
+  </div>
+</div>
+
+<nav id="nav">
+  <a href="#desk" class="nb">✦ <em>GE ELEC 6 · E-PORTFOLIO</em></a>
+  <ul class="nl">
+    <li><a href="#desk" class="on">Cover</a></li>
+    <li><a href="#photography">Photography</a></li>
+    <li><a href="#velasco">Docu Reflection</a></li>
+    <li><a href="#assessments">Assessments</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#feedback">Feedback</a></li>
+  </ul>
+  <div class="theme-toggle" id="themeToggle" title="Switch theme">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0;opacity:.7"><circle cx="7" cy="7" r="6" fill="#7B4AB8"/><circle cx="7" cy="7" r="3" fill="#C9A8E8"/></svg>
+    <div class="toggle-track"><div class="toggle-thumb"></div></div>
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0;opacity:.7"><circle cx="7" cy="7" r="6" fill="#6B0F0F"/><circle cx="7" cy="7" r="3" fill="#C49A7A"/></svg>
+  </div>
+</nav>
+
+<section id="desk">
+  <div class="desk-stage" id="stage">
+
+    <div class="wash wash-h" style="width:140px;top:30px;left:60px;transform:rotate(-8deg);background:var(--washi1)"></div>
+    <div class="wash wash-h" style="width:90px;bottom:60px;right:80px;transform:rotate(6deg);background:var(--washi2)"></div>
+    
+    <div class="item polaroid" style="top:-20px;left:-60px;transform:rotate(-8deg);z-index:6" data-depth=".04">
+      <div class="pin pp" style="top:-9px;left:50%;transform:translateX(-50%)"></div>
+      <div class="pol-img" style="background:linear-gradient(135deg,var(--p6),var(--p5))">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" style="width:42px;height:42px;stroke:var(--ink2);"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+      </div>
+      <div class="pol-cap" style="font-family:'Caveat',cursive;">Photo Essay</div>
+    </div>
+    <div class="item polaroid" style="top:-30px;right:-50px;transform:rotate(9deg);z-index:6" data-depth=".06">
+      <div class="pin pg" style="top:-9px;left:50%;transform:translateX(-50%)"></div>
+      <div class="pol-img" style="background:linear-gradient(135deg,#fff8d6,#fff0b0)">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" style="width:42px;height:42px;stroke:var(--ink2);"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c1.38 0 2.5-1.12 2.5-2.5 0-.61-.24-1.16-.63-1.57-.35-.37-.57-.88-.57-1.43 0-1.1.9-2 2-2h1.5c2.76 0 5-2.24 5-5 0-4.42-4.48-8-10-8z"/></svg>
+      </div>
+      <div class="pol-cap" style="font-family:'Caveat',cursive;">Art Work</div>
+    </div>
+    
+    <div class="item date-card" style="top:30px;right:-120px;transform:rotate(4deg);width:120px;z-index:8" data-depth=".08">
+      <div class="date-month">May</div>
+      <div class="date-num">2026</div>
+      <div class="date-year">2nd Sem</div>
+    </div>
+
+    <div class="item stickyN" style="top:220px;right:-140px;width:160px;transform:rotate(-3deg);background:linear-gradient(160deg,#F7F0FF,#EFE3FF);color:var(--ink);z-index:8" data-depth=".07">
+      <span class="sn-label">✦ Note</span>
+      <div class="sn-title" style="font-size:14px">📖 5 Chapters</div>
+      <div class="sn-body">Photography · Reflection · Assessments · Experience · Feedback</div>
+    </div>
+
+    <div class="item tag-label" style="top:-10px;left:130px;z-index:9;transform:rotate(-2deg)" data-depth=".09">
+      <span>Reading Visual Arts</span>
+    </div>
+
+    <div class="item" style="top: 130px; left: -140px; transform: rotate(15deg); z-index: 5;" data-depth=".03">
+      <div class="coffee-cup"><div class="coffee-inner"><div class="coffee-foam"></div></div></div>
+    </div>
+    <div class="item" style="bottom: 120px; right: -150px; transform: rotate(45deg); z-index: 5;" data-depth=".05">
+      <svg width="100" height="16" viewBox="0 0 100 16">
+        <polygon points="0,8 15,0 15,16" fill="#f4d0a4"/>
+        <polygon points="0,8 6,5 6,11" fill="#333"/>
+        <rect x="15" y="0" width="70" height="16" fill="#f1c40f"/>
+        <rect x="15" y="4" width="70" height="8" fill="#e67e22"/>
+        <rect x="85" y="0" width="15" height="16" fill="#e74c3c"/>
+        <rect x="85" y="0" width="5" height="16" fill="#bdc3c7"/>
+      </svg>
+    </div>
+
+    <div class="item char-cover" style="z-index: 5; left: -30px; bottom: 70px; width: clamp(150px, 20vw, 240px); transform: rotate(-5deg);" data-depth=".06">
+      <img src="girl_sitting_laptop.png" alt="Girl sitting with a laptop">
+    </div>
+    <div class="item char-cover" style="z-index: 5; right: -10px; top: 270px; width: clamp(120px, 15vw, 200px); transform: rotate(5deg);" data-depth=".04">
+      <img src="girl_waving.png" alt="Girl waving">
+    </div>
+    <div class="item char-cover" style="z-index: 100; right: 6%; bottom: 150px; width: clamp(200px, 25vw, 320px);" data-depth=".07">
+      <img src="girl.png" alt="Character Illustration">
+    </div>
+
+    <div style="position:relative;z-index:50;display:flex;justify-content:center">
+      <div class="cover-main" id="coverCard">
+        <div class="cover-washi"></div>
+        <div class="pin pp pin" style="top:-9px;left:22px"></div>
+        <div class="pin pg pin" style="top:-9px;right:22px"></div>
+        
+        <div class="sch-name">Camarines Norte State College<br>BSIT 2A · GE ELEC 6</div>
+        <span class="gec-big">GE ELEC 6</span>
+        <span class="eport">E-Portfolio</span>
+        <span class="art-pill">Reading Visual Arts</span>
+        
+        <div style="text-align:center">
+          <div class="stu-photo">
+            <img src="profile.jpeg" alt="Katrinca Claire T. Ibita">
+          </div>
+          <span class="stu-name">Katrinca Claire T. Ibita</span>
+          <span class="stu-sec">BSIT 2A</span>
+          <a href="mailto:katrinca.ibita@cnsc.edu.ph" class="stu-email">katrinca.ibita@cnsc.edu.ph</a>
+          <span class="sem-badge">✦ Second Semester · S.Y. 2025–2026 ✦</span>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+  <div class="scroll-hint">
+    <span class="sh-txt">scroll to explore</span>
+    <div class="sh-arr"></div>
+  </div>
+</section>
+
+<section id="photography" class="content-section">
+  
+  <div class="aesthetic-decor" style="top: 15%; right: 10%; font-size: 32px; color: var(--gold2);">✦</div>
+  <div class="aesthetic-decor" style="bottom: 30%; left: 5%; font-size: 24px; color: var(--p4);">✧</div>
+
+  <div class="page-header">
+    <div class="page-header-label">Group Output &nbsp;·&nbsp; Group 1</div>
+    <h1 class="page-header-title">Photo<em>graphy</em></h1>
+    <p class="page-header-sub">Concepts, Technicalities, Photo Analysis &amp; Critical Viewing Skills</p>
+  </div>
+
+  <div class="photo-board">
+    
+    <div class="photo-card theme-cream span-7 r2 reveal">
+      <div class="tape"></div>
+      <div class="pin pp" style="top:-9px;left:18px"></div>
+      <div class="pc-tag">Introduction</div>
+      <h2 class="pc-title">"Photography is the story I fail to put into words."</h2>
+      <div class="pc-body">
+        <p>Photography has become one of the most powerful forms of communication. Every scroll through social media tells a story through images. But how many of us truly understand what goes into making a photograph — or how to <strong>critically read</strong> one?</p>
+        <hr class="card-divider">
+        <p><strong>Key Concepts Covered:</strong></p>
+        <ul>
+          <li>The science of light and exposure.</li>
+          <li>Compositional guidelines (Rule of Thirds, Leading Lines).</li>
+          <li>The ethical responsibilities of capturing reality.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="photo-card theme-gold span-5 r5 reveal">
+      <div class="tape" style="background:var(--washi2)"></div>
+      <div class="pc-tag">Brief History</div>
+      <h2 class="pc-title" style="font-size:18px;">A Timeline of Light</h2>
+      <div class="pc-body">
+        <p>Modern photography emerged in <strong>1839</strong> with the daguerreotype, succeeding centuries of the <em>camera obscura</em>. Glass plates → flexible film → <strong>21st-century digital revolution</strong>.</p>
+        <hr class="card-divider">
+        <p>The evolution of the medium has fundamentally democratized the craft, shifting it from a highly specialized scientific endeavor to a universal daily practice.</p>
+      </div>
+    </div>
+
+    <div class="photo-card theme-white span-4 r3 reveal">
+      <div class="pin pg" style="top:-9px;left:50%;transform:translateX(-50%)"></div>
+      <div class="pc-tag">Vocabulary</div>
+      <h2 class="pc-title" style="font-size: 18px;">Core Terms</h2>
+      <div class="def-list">
+        <div class="def-item"><span class="def-term">Exposure</span><span class="def-def">Amount of light reaching the sensor.</span></div>
+        <div class="def-item"><span class="def-term">Aperture</span><span class="def-def">Lens diaphragm regulating depth of field.</span></div>
+        <div class="def-item"><span class="def-term">ISO</span><span class="def-def">Sensor sensitivity. Low = clean. High = grain.</span></div>
+      </div>
+    </div>
+
+    <div class="photo-card theme-cream span-8 r1 reveal">
+      <div class="pin pp" style="top:-9px;right:18px"></div>
+      <div class="pc-tag">Technical Foundation</div>
+      <h2 class="pc-title">The Exposure <em>Triangle</em></h2>
+      <p class="pc-body">The three pillars of proper exposure work in balance — changing one requires adjusting the others to maintain the correct lighting.</p>
+      <div class="tri-diagram">
+        <svg width="300" height="200" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="150,10 290,190 10,190" fill="none" stroke="#C9A84C" stroke-width="1.5" stroke-dasharray="4,3"/>
+          <polygon points="150,50 260,180 40,180" fill="rgba(201,168,76,.1)" stroke="rgba(201,168,76,.4)" stroke-width="1"/>
+          <circle cx="150" cy="10" r="22" fill="#3B1470" stroke="#C9A84C" stroke-width="1.5"/>
+          <text x="150" y="7" text-anchor="middle" font-family="Playfair Display,serif" font-size="9" fill="#FFF0B3" font-style="italic">f-stop</text>
+          <text x="150" y="16" text-anchor="middle" font-family="Nunito,sans-serif" font-size="9" fill="#fff" font-weight="700">APT</text>
+          <circle cx="290" cy="190" r="22" fill="#3B1470" stroke="#C9A84C" stroke-width="1.5"/>
+          <text x="290" y="187" text-anchor="middle" font-family="Playfair Display,serif" font-size="9" fill="#FFF0B3" font-style="italic">1/s</text>
+          <text x="290" y="196" text-anchor="middle" font-family="Nunito,sans-serif" font-size="9" fill="#fff" font-weight="700">SHUT</text>
+          <circle cx="10" cy="190" r="22" fill="#3B1470" stroke="#C9A84C" stroke-width="1.5"/>
+          <text x="10" y="187" text-anchor="middle" font-family="Playfair Display,serif" font-size="9" fill="#FFF0B3" font-style="italic">100+</text>
+          <text x="10" y="196" text-anchor="middle" font-family="Nunito,sans-serif" font-size="9" fill="#fff" font-weight="700">ISO</text>
+          <text x="150" y="108" text-anchor="middle" font-family="Playfair Display,serif" font-size="12" fill="var(--p1)" font-style="italic" font-weight="700">Exposure</text>
+        </svg>
+      </div>
+    </div>
+
+    <div class="photo-card theme-white span-12 r6 reveal">
+      <div class="pin pg" style="top:-9px;left:50%;transform:translateX(-50%)"></div>
+      <div class="pc-tag">Ethical Dimensions</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));gap:30px;">
+        <div>
+          <div style="font-family:'Playfair Display',serif;font-style:italic;font-size:18px;color:var(--p1);margin-bottom:8px;border-bottom:1px solid rgba(165,125,212,.3);padding-bottom:6px;font-weight:700;">Utilitarianism</div>
+          <p class="pc-body">Photography serving the public good is ethically justified. The greatest good for the greatest number supports using images as tools for social change.</p>
+        </div>
+        <div>
+          <div style="font-family:'Playfair Display',serif;font-style:italic;font-size:18px;color:var(--p1);margin-bottom:8px;border-bottom:1px solid rgba(165,125,212,.3);padding-bottom:6px;font-weight:700;">Deontology</div>
+          <p class="pc-body">Moral duty demands photographers obtain informed consent. Altering images to mislead the public is inherently unethical — regardless of outcome.</p>
+        </div>
+        <div>
+          <div style="font-family:'Playfair Display',serif;font-style:italic;font-size:18px;color:var(--p1);margin-bottom:8px;border-bottom:1px solid rgba(165,125,212,.3);padding-bottom:6px;font-weight:700;">Virtue Ethics</div>
+          <p class="pc-body">A virtuous photographer exercises honesty, empathy, and respect — choosing angles that represent subjects with dignity.</p>
+        </div>
+      </div>
+      <div class="badge-row">
+        <span class="badge badge-red">Consent</span>
+        <span class="badge badge-blue">Manipulation</span>
+        <span class="badge badge-green">Representation</span>
+      </div>
+    </div>
+
+    <div class="photo-card theme-dark span-8 r5 reveal">
+      <div class="pin pg" style="top:-9px;right:18px"></div>
+      <div class="pc-tag pc-tag-inv">Core Argument</div>
+      <h2 class="pc-title pc-title-inv">Photography as Deliberate <em>Storytelling</em></h2>
+      <div class="pc-body pc-body-inv">
+        <p>Technical decisions are inherently narrative. A wide-angle perspective of a protest emphasizes <em>collective scale</em>; a telephoto close-up prioritizes <em>individual pathos</em>. Both are factually accurate — but framing dictates perceived reality.</p>
+        <div class="conclusion-pull">
+          "By questioning the origin and purpose of an image, viewers transform from passive consumers into informed interpreters of visual culture."
+        </div>
+        <p style="font-size:9px;color:rgba(255,255,255,.4);margin-top:16px;font-family:'Special Elite',cursive;letter-spacing:2px;text-transform:uppercase;">
+          Abiera · Ajento · Del Barrio · Ibita · Gozo · Laceda · Nael · Pomada · Rawat · Sacayan · Tabanao · Caranto
+        </p>
+      </div>
+    </div>
+
+    <div class="char-grid-wrapper span-4 reveal" style="grid-column: 9 / span 4;">
+      <img src="girl_camera.png" alt="A straight-haired girl holding a camera" class="floating-char">
+    </div>
+
+    <div class="doc-cluster">
+      <div class="media-trigger reveal" id="openPdfBtn" title="Click to open Document" style="transform: rotate(-4deg)">
+        <svg class="trigger-ico" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16c0 1.1.9 2 2 2h12a2 2 0 0 0 2-2V8l-6-6z"/><path d="M14 3v5h5M16 13H8M16 17H8M10 9H8"/></svg>
+        <div class="pdf-text">Group<br>Discussion</div>
+        <div class="pdf-hint">Read Paper ✦</div>
+      </div>
+      <a href="https://canva.link/0vs0m0zx4sfztul" target="_blank" class="media-trigger reveal" title="Click to view PPT" style="transform: rotate(3deg)">
+        <svg class="trigger-ico" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4M7 8l3 3 3-3 4 4"/></svg>
+        <div class="pdf-text">Presentation<br>Slides</div>
+        <div class="pdf-hint">View PPT ✦</div>
+      </a>
+      <a href="https://www.youtube.com/watch?v=JcYdgJf931Q" target="_blank" class="media-trigger reveal" title="Click to watch Video" style="transform: rotate(-5deg)">
+        <svg class="trigger-ico" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M10 8l6 4-6 4V8z"/></svg>
+        <div class="pdf-text">Documentary<br>Video</div>
+        <div class="pdf-hint">Watch ✦</div>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<section id="velasco" class="content-section">
+
+  <div class="aesthetic-decor" style="top: 25%; left: 15%; font-size: 20px; color: var(--gold2);">✦</div>
+
+  <div class="page-header">
+    <div class="page-header-label">Individual Reflection &nbsp;·&nbsp; Documentary Analysis</div>
+    <h1 class="page-header-title">Sa Kambas ng <em>Lipunan</em></h1>
+    <p class="page-header-sub">The Joey Velasco Documentary · Hapag ng Pag-asa</p>
+  </div>
+
+  <div class="photo-board">
+    
+    <div class="photo-card theme-cream span-8 r5 reveal" style="grid-column: 1 / span 8;">
+      <div class="pin pp" style="top:-9px;right:18px"></div>
+      <div class="pc-tag">Art as Witness</div>
+      <h2 class="pc-title">Faith, Struggle, and <em>Compassion</em></h2>
+      <div class="pc-body">
+        <p>Joey Velasco's documentary reveals that his paintings were not merely works of art — they were expressions of <strong>faith, struggle, and compassion</strong>. While creating <em>Hapag ng Pag-asa</em>, he was ill, depressed, and confronting mortality. Painting became his surrender and his search for light.</p>
+        <p>Unlike artists who seek recognition, Joey's purpose was deeper: to use art as a bridge between privilege and poverty, visibility and invisibility.</p>
+      </div>
+    </div>
+
+    <div class="photo-card theme-gold span-4 r2 reveal" style="grid-column: 9 / span 4;">
+      <div class="tape" style="background:var(--washi3)"></div>
+      <div class="pc-tag">Metadata</div>
+      <h2 class="pc-title" style="font-size:18px;">Viewing Details</h2>
+      <div class="pc-body">
+        <p><strong>Date Viewed:</strong> February 12, 2026</p>
+        <p><strong>Subject:</strong> GE ELEC 6</p>
+        <p><strong>Student:</strong> Katrinca Claire T. Ibita · BSIT 2A</p>
+        <hr class="card-divider">
+        <p><strong>Focus:</strong> Understanding art as a medium for profound social commentary and empathetic storytelling.</p>
+      </div>
+    </div>
+
+    <div class="char-grid-wrapper span-4 reveal" style="grid-column: 1 / span 4;">
+      <div class="media-trigger view-img-btn" data-img-src="reflection_paper.jpg" title="Click to view Reflection Paper" style="transform: rotate(4deg); background: #fff; color: var(--ink); margin-bottom: 18px;">
+        <svg class="trigger-ico" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M20.4 14.5L16 10 4 20"/></svg>
+        <div class="pdf-text" style="color: var(--p1); font-family: 'Playfair Display', serif; font-size: 16px; text-transform: none; letter-spacing: normal;">Reflection<br>Paper</div>
+        <div class="pdf-hint" style="left: -15px; right: auto; transform: rotate(-10deg);">View Image ✦</div>
+      </div>
+      <div class="character-square" style="width:100%;max-width:260px;height:240px;">
+        <img src="girl_square.png" alt="A straight-haired girl in a portrait square">
+      </div>
+    </div>
+
+    <div class="photo-card theme-white span-8 r1 reveal" style="grid-column: 5 / span 8;">
+      <div class="pin pg" style="top:-9px;left:18px"></div>
+      <div class="pc-tag">The Most Powerful Moment</div>
+      <h2 class="pc-title">Beyond the Canvas</h2>
+      <div class="pc-body">
+        <p>The most powerful moment came when he returned to the children who were his subjects — he didn't just capture their struggles on canvas; he helped them find homes and education.</p>
+        <div class="quote-block">
+          "We tell ourselves 'nasanay na sila' — but the honest truth is nasanay lang tayo."
+        </div>
+        <p>This distinction — poverty normalized for <em>them</em> and numbness settling in <em>us</em> — is what the documentary forces us to confront. We have become so used to seeing poverty that we stopped feeling it.</p>
+      </div>
+    </div>
+
+    <div class="photo-card theme-dark span-12 r4 reveal" style="grid-column: 1 / span 12;">
+      <div class="pin pp" style="top:-9px;left:50%;transform:translateX(-50%)"></div>
+      <div class="pc-tag pc-tag-inv">Conclusion</div>
+      <h2 class="pc-title pc-title-inv">Real <em>Legacy</em></h2>
+      <div class="pc-body pc-body-inv">
+        <p><strong>What this taught me:</strong> Life only gains meaning when it is shared. Real legacy is not fame — it is the lives we choose to care for and change. Joey Velasco did not just create art; he used art as a call to sit at the table of responsibility.</p>
+        <div class="conclusion-pull" style="font-size: 16px;">
+          "Every stroke carried moral weight. Critical viewing means seeing not just beauty, but hunger, hope, and challenge."
+        </div>
+        <p>This documentary deepened my understanding of what art can be. In the context of GE ELEC 6, Velasco's work is a masterclass in art as social commentary.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="assessments" class="content-section">
+  
+  <div class="aesthetic-decor" style="top: 10%; left: 80%; font-size: 28px; color: var(--p3);">✧</div>
+
+  <div class="page-header">
+    <div class="page-header-label">Artifacts of Learning &nbsp;·&nbsp; Written Works</div>
+    <h1 class="page-header-title">Knowledge &amp; <em>Understanding</em></h1>
+    <p class="page-header-sub">Reflections on Quizzes, Long Quizzes, and the Midterm Examination</p>
+  </div>
+
+  <div class="photo-board">
+    
+    <div class="photo-card theme-gold span-4 r2 reveal" style="grid-column: 1 / span 4;">
+      <div class="tape" style="background:var(--washi1)"></div>
+      <div class="pc-tag">Quiz 1</div>
+      <h2 class="pc-title" style="font-size:18px;">Foundations of Art</h2>
+      <div class="pc-body">
+        <p>Our first quiz set the groundwork for the semester, testing our knowledge of basic art terminology, mediums, and techniques.</p>
+        <p><strong>Reflection:</strong> This quick assessment reminded me that appreciating art starts with knowing its vocabulary. Understanding terms like "Curation," "Additive process," and "Medium" gave me the right lenses to view subsequent artworks.</p>
+        <button class="view-img-btn" data-img-src="image_1686de.jpg" style="margin-top:auto;">View Quiz 1 ✦</button>
+      </div>
+    </div>
+
+    <div class="char-grid-wrapper span-4 reveal" style="grid-column: 5 / span 4;">
+      <div style="font-family: 'Special Elite', cursive; font-size: 24px; color: var(--gold); opacity: 0.7; margin-bottom: 10px; animation: floatDecor 3s infinite alternate;">A+</div>
+      <img src="girl_test_paper.png" alt="A straight-haired girl holding a test paper" class="floating-char">
+    </div>
+
+    <div class="photo-card theme-white span-4 r5 reveal" style="grid-column: 9 / span 4;">
+      <div class="pin pp" style="top:-9px;right:18px"></div>
+      <div class="pc-tag">Long Quiz</div>
+      <h2 class="pc-title" style="font-size:18px;">Reading Visual Arts</h2>
+      <div class="pc-body">
+        <p>The long quiz dove deeper into critical viewing, exploring how we extract meaning from both traditional art and modern media like film.</p>
+        <div class="highlight-qa">
+          <div class="qa-item">
+            <span class="q-label">Q:</span> "This refers to interpreting visual artworks as texts..."<br>
+            <span class="a-label">A:</span> <strong>Reading Visual Arts</strong>
+          </div>
+        </div>
+        <p>Auteur theory and visual reading are practical tools for decoding embedded messages.</p>
+        <button class="view-img-btn" data-img-src="image_168a42.jpg" style="margin-top:auto;">View Long Quiz ✦</button>
+      </div>
+    </div>
+
+    <div class="photo-card theme-dark span-12 r1 reveal" style="grid-column: 1 / span 12;">
+      <div class="pin pg" style="top:-9px;left:50%;transform:translateX(-50%)"></div>
+      <div class="pc-tag pc-tag-inv">Midterm Examination</div>
+      <h2 class="pc-title pc-title-inv">Synthesizing <em>Concepts</em></h2>
+      <div class="pc-body pc-body-inv split-body">
+        <div>
+          <p>The Midterm Examination tested our holistic understanding of art appreciation, from basic definitions to complex ethical and social interpretations.</p>
+          <p><strong>Reflection:</strong> Reviewing these questions shows how much my perspective has broadened. Art is no longer just "decoration"—it's a reflection of societal struggles, personal interpretation, and cultural history. Learning to differentiate the author's intent from the audience's meaning changed how I consume all media.</p>
+          
+          <div style="margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap;">
+              <button class="view-img-btn" data-img-src="image_168779.jpg">Page 1</button>
+              <button class="view-img-btn" data-img-src="image_168759.jpg">Page 2</button>
+              <button class="view-img-btn" data-img-src="image_16873c.jpg">Page 3</button>
+              <button class="view-img-btn" data-img-src="image_168720.jpg">Page 4</button>
+              <button class="view-img-btn" data-img-src="image_168701.jpg">Page 5</button>
+          </div>
+        </div>
+        <div>
+          <div class="highlight-qa qa-inv">
+            <div class="qa-item">
+              <span class="q-label">Q:</span> "What does 'reading visual arts' mean?"<br>
+              <span class="a-label">A:</span> <strong>Interpreting and understanding the meaning of an artwork.</strong>
+            </div>
+            <div class="qa-item">
+              <span class="q-label">Q:</span> "Why is understanding author's meaning important?"<br>
+              <span class="a-label">A:</span> <strong>It helps identify hidden intentions and themes.</strong>
+            </div>
+            <div class="qa-item">
+              <span class="q-label">Q:</span> "An artwork showing poverty in urban areas encourages viewers to reflect on inequality..."<br>
+              <span class="a-label">A:</span> <strong>Social consciousness.</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="experience" class="content-section">
+  
+  <div class="aesthetic-decor" style="top: 20%; left: 30%; font-family: 'Special Elite', cursive; color: var(--p3); opacity: 0.5;">&lt; / &gt;</div>
+  
+  <div class="page-header">
+    <div class="page-header-label">Personal Journey &nbsp;·&nbsp; GE ELEC 6</div>
+    <h1 class="page-header-title">My <em>Experience</em></h1>
+    <p class="page-header-sub">Growth, Challenges, and Creative Discoveries</p>
+  </div>
+
+  <div class="photo-board">
+    
+    <div class="char-grid-wrapper span-4 reveal" style="grid-column: 1 / span 4;">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke="var(--p4)" style="width:40px;height:40px; opacity:0.6; margin-bottom: 10px; animation: floatDecor 5s infinite alternate;"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+      <img src="girl_10_fingers.png" alt="A straight-haired girl holding up 10 fingers indicating 10/10" class="floating-char">
+    </div>
+
+    <div class="photo-card theme-cream span-8 r3 reveal" style="grid-column: 5 / span 8;">
+      <div class="tape"></div>
+      <div class="pc-tag">The IT Perspective</div>
+      <h2 class="pc-title">From Code to <em>Canvas</em></h2>
+      <div class="pc-body">
+        <p>As a BSIT student, I am used to logic, rigid syntax, and building systems that function perfectly. Coming into Reading Visual Arts, I felt slightly out of my element. Art doesn't compile or throw an error; it simply exists to be felt.</p>
+        <p>However, this experience taught me that <strong>design is universal</strong>. The same principles of balance and harmony I use when designing an app interface apply directly to a painter organizing their canvas.</p>
+        <hr class="card-divider">
+        <p><strong>Parallels I Discovered:</strong></p>
+        <ul>
+          <li><strong>Code Structure</strong> mirrors <strong>Composition</strong>.</li>
+          <li><strong>User Experience (UX)</strong> mirrors <strong>Audience Interpretation</strong>.</li>
+          <li><strong>Debugging</strong> mirrors <strong>Critique and Revision</strong>.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="photo-card theme-white span-12 r6 reveal" style="grid-column: 1 / span 12;">
+      <div class="pin pg" style="top:-9px;right:18px"></div>
+      <div class="pc-tag">Skill Acquisition</div>
+      <h2 class="pc-title">Developing the <em>Eye</em></h2>
+      <div class="pc-body">
+        <p>The most significant skill I gained was <strong>Visual Literacy</strong>—the ability to "read" an image. Before GE ELEC 6, I would look at a photograph and just see a landscape. Now, I see leading lines, the rule of thirds, and the careful manipulation of exposure.</p>
+        <p>This experience forced me to slow down. In a fast-paced digital world, learning to stop, observe, and critically analyze a single piece of art has been incredibly grounding.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="feedback" class="content-section">
+
+  <div class="aesthetic-decor" style="top: 15%; right: 25%; font-size: 28px; color: var(--gold2);">✦</div>
+
+  <div class="page-header">
+    <div class="page-header-label">Course Evaluation &nbsp;·&nbsp; Reflections</div>
+    <h1 class="page-header-title">Constructive <em>Feedback</em></h1>
+    <p class="page-header-sub">Thoughts on the learning environment and instruction</p>
+  </div>
+
+  <div class="photo-board">
+
+    <div class="photo-card theme-gold span-8 r2 reveal" style="grid-column: 1 / span 8;">
+      <div class="tape" style="background:var(--washi2)"></div>
+      <div class="pc-tag">Self-Evaluation</div>
+      <h2 class="pc-title">Personal <em>Takeaways</em></h2>
+      <div class="pc-body">
+        <p>I am proud of the effort I put into this course. Stepping away from technical subjects to engage with history and aesthetics was refreshing.</p>
+        <p>If I could improve one thing, it would be to trust my creative instincts more during the practical outputs instead of worrying about making them "perfect." The process of making art is just as important as the final product.</p>
+        
+        <div class="star-rating-widget">
+          <div class="srw-label">Your Rating for the Course</div>
+          <div class="srw-stars" id="starWidget" role="group" aria-label="Course rating">
+            <button class="srw-star" data-val="1" aria-label="1 star" title="Poor">★</button>
+            <button class="srw-star" data-val="2" aria-label="2 stars" title="Fair">★</button>
+            <button class="srw-star" data-val="3" aria-label="3 stars" title="Good">★</button>
+            <button class="srw-star" data-val="4" aria-label="4 stars" title="Very Good">★</button>
+            <button class="srw-star" data-val="5" aria-label="5 stars" title="Excellent">★</button>
+          </div>
+          <div class="srw-caption" id="srwCaption">Tap a star to rate</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="char-grid-wrapper span-4 reveal" style="grid-column: 9 / span 4;">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke="var(--gold)" style="width:40px;height:40px; opacity:0.6; margin-bottom: 10px; animation: floatDecor 4s infinite alternate;"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      <img src="girl_thumbs_up.png" alt="A straight-haired girl giving a thumbs up" class="floating-char">
+    </div>
+
+    <div class="photo-card theme-dark span-12 r5 reveal" style="grid-column: 1 / span 12;">
+      <div class="pin pp" style="top:-9px;left:50%;transform:translateX(-50%)"></div>
+      <div class="pc-tag pc-tag-inv">Course Structure</div>
+      <h2 class="pc-title pc-title-inv">Teaching &amp; <em>Instruction</em></h2>
+      <div class="pc-body pc-body-inv">
+        <p>The progression of GE ELEC 6 was exceptionally well-structured. Starting from basic elements and moving toward complex critical analysis allowed us to build our knowledge step-by-step. The exams effectively synthesized what we learned in practical exercises.</p>
+        <p>The inclusion of documentaries like Joey Velasco's <em>Hapag ng Pag-asa</em> anchored the theoretical concepts into real, emotional human experiences.</p>
+        <div class="conclusion-pull">
+          "Thank you maam Jho for creating a space where we could safely explore our creative capabilities."
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<footer><span class="ft-logo">✦ GE ELEC 6 · Reading Visual Arts E-Portfolio</span><div class="ft-div"></div><div class="ft-sub">Katrinca Claire T. Ibita · BSIT 2A · Camarines Norte State College</div></footer>
+
+<script>
+/* ── LOADER ── */
+window.addEventListener('load',()=>{
+  setTimeout(()=>document.getElementById('loader').classList.add('out'),1800)
+})
+
+/* ── CURSOR ── */
+const C=document.getElementById('cur'),C2=document.getElementById('cur2')
+let mx=0,my=0,tx=0,ty=0
+document.addEventListener('mousemove',e=>{
+  mx=e.clientX;my=e.clientY
+  C.style.left=mx+'px';C.style.top=my+'px'
+})
+;(function loop(){
+  tx+=(mx-tx)*.13;ty+=(my-ty)*.13
+  C2.style.left=tx+'px';C2.style.top=ty+'px'
+  requestAnimationFrame(loop)
+})()
+
+/* ── NAV HIDE & UPDATE ON SCROLL ── */
+let lastY=0
+const nav=document.getElementById('nav')
+const sections = document.querySelectorAll('section');
+const navLinks = document.querySelectorAll('.nl a');
+
+window.addEventListener('scroll',()=>{
+  const y=window.scrollY
+  nav.classList.toggle('hide',y>lastY&&y>100)
+  lastY=y
+
+  let current = '';
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop;
+    if (pageYOffset >= sectionTop - 150) {
+      current = section.getAttribute('id');
+    }
+  });
+
+  navLinks.forEach(link => {
+    link.classList.remove('on');
+    if (link.getAttribute('href').includes(current)) {
+      link.classList.add('on');
+    }
+  });
+},{ passive:true })
+
+/* ── PDF MODAL LOGIC ── */
+const pdfTrigger = document.getElementById('openPdfBtn');
+const pdfModal = document.getElementById('pdf-modal');
+const closePdfBtn = document.getElementById('closePdfBtn');
+
+if(pdfTrigger) {
+  pdfTrigger.addEventListener('click', () => {
+    pdfModal.classList.add('open');
+    document.body.style.overflow = 'hidden'; 
+  });
+}
+closePdfBtn.addEventListener('click', () => {
+  pdfModal.classList.remove('open');
+  document.body.style.overflow = '';
+});
+pdfModal.addEventListener('click', (e) => {
+  if (e.target === pdfModal) {
+    pdfModal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+});
+
+/* ── DYNAMIC IMAGE MODAL LOGIC ── */
+const imgTriggerBtns = document.querySelectorAll('.view-img-btn, #openImgBtn');
+const imgModal = document.getElementById('img-modal');
+const closeImgBtn = document.getElementById('closeImgBtn');
+const modalDynamicImg = document.getElementById('modalDynamicImg');
+
+imgTriggerBtns.forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation(); 
+    
+    const imgSrc = btn.getAttribute('data-img-src') || 'reflection_paper.jpg';
+    if(imgSrc) {
+        modalDynamicImg.src = imgSrc;
+    }
+    
+    imgModal.classList.add('open');
+    document.body.style.overflow = 'hidden'; 
+  });
+});
+
+closeImgBtn.addEventListener('click', () => {
+  imgModal.classList.remove('open');
+  document.body.style.overflow = '';
+});
+imgModal.addEventListener('click', (e) => {
+  if (e.target === imgModal) {
+    imgModal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+});
+
+/* ── PARALLAX ON DESK ITEMS ── */
+const items=[...document.querySelectorAll('.item[data-depth]')]
+document.addEventListener('mousemove',e=>{
+  const cx=window.innerWidth/2,cy=window.innerHeight/2
+  const dx=e.clientX-cx,dy=e.clientY-cy
+  items.forEach(el=>{
+    const d=parseFloat(el.dataset.depth||.05)
+    const ox=dx*d,oy=dy*d
+    const currentTransform = el.style.transform || window.getComputedStyle(el).transform;
+    const rotateMatch = currentTransform.match(/rotate\([^)]+\)/);
+    const rotateStr = rotateMatch ? rotateMatch[0] : 'rotate(0deg)';
+    el.style.transform=`${rotateStr} translate3d(${ox}px,${oy}px,0)`
+  })
+})
+
+/* ── COVER CARD 3D TILT ── */
+const cov=document.getElementById('coverCard')
+cov.addEventListener('mousemove',e=>{
+  const r=cov.getBoundingClientRect()
+  const x=(e.clientX-r.left)/r.width-.5
+  const y=(e.clientY-r.top)/r.height-.5
+  cov.style.transform=`perspective(800px) rotateY(${x*12}deg) rotateX(${-y*10}deg) scale(1.03)`
+  cov.style.boxShadow = `0 30px 60px rgba(58,26,92,0.3)`
+})
+cov.addEventListener('mouseleave',()=>{
+  cov.style.transform='perspective(800px) rotateY(0) rotateX(0) scale(1)'
+  cov.style.boxShadow = `0 20px 60px rgba(58,26,92,.22)`
+})
+
+/* ── STAR RATING WIDGET ── */
+const captions = ['', 'Poor 😕', 'Fair 🙂', 'Good 👍', 'Very Good 🌟', 'Excellent! ✨'];
+const rejectMsgs = ['', "1 star? This course deserves better! ✦", "2 stars? Think again — give it 5! ✦", "3 stars? Almost there, push to 5! ✦", "4 stars? So close — give it a perfect 5! ✦"];
+const starWidget = document.getElementById('starWidget');
+const srwCaption = document.getElementById('srwCaption');
+if (starWidget) {
+  const stars = [...starWidget.querySelectorAll('.srw-star')];
+  let selected = 5;
+
+  function setHighlight(upTo) {
+    stars.forEach((s, i) => {
+      s.classList.toggle('hovered', i < upTo);
+    });
+  }
+
+  function setSelected(val) {
+    if (val < 5) {
+      // Reject — shake and warn
+      stars.forEach((s, i) => { s.classList.toggle('hovered', i < val); s.classList.remove('selected'); });
+      srwCaption.textContent = rejectMsgs[val];
+      srwCaption.style.color = '#c0392b';
+      starWidget.classList.remove('srw-shake');
+      void starWidget.offsetWidth;
+      starWidget.classList.add('srw-shake');
+      setTimeout(() => { 
+        setHighlight(0);
+        srwCaption.textContent = captions[selected] || 'Tap a star to rate';
+        srwCaption.style.color = '';
+      }, 1600);
+      return;
+    }
+    selected = val;
+    stars.forEach((s, i) => {
+      s.classList.toggle('selected', i < val);
+      s.classList.remove('hovered');
+    });
+    srwCaption.textContent = captions[val];
+    srwCaption.style.color = '';
+    const chosen = stars[val - 1];
+    chosen.classList.remove('pop');
+    void chosen.offsetWidth;
+    chosen.classList.add('pop');
+  }
+
+  setSelected(5);
+
+  stars.forEach((star, i) => {
+    star.addEventListener('mouseenter', () => {
+      setHighlight(i + 1);
+      srwCaption.textContent = i < 4 ? rejectMsgs[i + 1] : captions[i + 1];
+      srwCaption.style.color = i < 4 ? '#c0392b' : '';
+    });
+    star.addEventListener('mouseleave', () => {
+      setHighlight(0);
+      srwCaption.textContent = captions[selected] || 'Tap a star to rate';
+      srwCaption.style.color = '';
+    });
+    star.addEventListener('click', () => setSelected(i + 1));
+  });
+}
+
+/* ── THEME TOGGLE ── */
+const themeToggle = document.getElementById('themeToggle');
+const toggleTrack = themeToggle.querySelector('.toggle-track');
+const html = document.documentElement;
+let isMaroon = false;
+toggleTrack.addEventListener('click', () => {
+  isMaroon = !isMaroon;
+  html.setAttribute('data-theme', isMaroon ? 'maroon' : '');
+  toggleTrack.style.background = isMaroon ? 'rgba(107,15,15,.5)' : 'rgba(255,255,255,.12)';
+});
+
+const reveals = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if(e.isIntersecting){
+      setTimeout(() => e.target.classList.add('visible'), i * 80);
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08 });
+reveals.forEach(r => io.observe(r));
+</script>
+</body>
+</html>
