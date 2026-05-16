@@ -350,6 +350,29 @@ section.content-section {
 #experience { background: radial-gradient(ellipse at bottom left, var(--section-tint1) 0%, transparent 70%), linear-gradient(180deg, #e8e3f0 0%, #f4ebd8 100%); }
 #feedback { background: radial-gradient(ellipse at bottom right, rgba(232,201,122,0.15) 0%, transparent 70%), linear-gradient(180deg, #f4ebd8 0%, var(--paper) 100%); }
 
+/* Instructor photo */
+.instructor-photo-wrap {
+  width: 160px; height: 180px; border-radius: 8px;
+  background: rgba(255,255,255,0.08);
+  border: 1.5px dashed rgba(201,168,76,0.5);
+  overflow: hidden; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+}
+.instructor-photo-wrap img {
+  width: 100%; height: 100%; object-fit: cover; border-radius: 7px; display: block;
+}
+.instructor-fallback {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; width: 100%; height: 100%;
+}
+.instructor-info {
+  text-align: center; margin-top: 10px;
+}
+.instructor-name {
+  font-family: 'Fraunces', serif; font-size: 14px; font-weight: 700; color: #fff; display: block; line-height: 1.3;
+}
+.instructor-role {
+  font-family: 'Kode Mono', monospace; font-size: 9px; letter-spacing: 2px; color: rgba(201,168,76,0.7); text-transform: uppercase; display: block; margin-top: 3px;
+}
 
 /* ─────────────── FOOTER ─────────────── */
 footer{background:var(--dark);border-top:1px solid rgba(165,125,212,.15);padding:50px;text-align:center}
@@ -415,7 +438,6 @@ footer{background:var(--dark);border-top:1px solid rgba(165,125,212,.15);padding
 [data-theme="purple"] .theme-cream { background: #F7F0FF; border: 1px solid rgba(201,169,232,.3); }
 
 /* ─────────────── GRAIN TEXTURE & BLUR EFFECTS ─────────────── */
-
 .photo-card::after {
   content: '';
   position: absolute;
@@ -430,7 +452,6 @@ footer{background:var(--dark);border-top:1px solid rgba(165,125,212,.15);padding
 .photo-card > * { position: relative; z-index: 1; }
 .theme-dark.photo-card::after { opacity: 0.055; mix-blend-mode: soft-light; }
 
-/* Blurred atmospheric glow behind section headers */
 .page-header { position: relative; }
 .page-header::before {
   content: '';
@@ -445,11 +466,9 @@ footer{background:var(--dark);border-top:1px solid rgba(165,125,212,.15);padding
 }
 .page-header > * { position: relative; z-index: 1; }
 
-/* Glass backdrop on light cards */
 .photo-card.theme-white { backdrop-filter: blur(2px) saturate(1.1); -webkit-backdrop-filter: blur(2px); }
 .photo-card.theme-cream { backdrop-filter: blur(1px) saturate(1.05); -webkit-backdrop-filter: blur(1px); }
 
-/* Frosted glass on star rating widget */
 .star-rating-widget { backdrop-filter: blur(8px) saturate(1.15); -webkit-backdrop-filter: blur(8px); }
 .star-rating-widget::after {
   content: '';
@@ -463,10 +482,8 @@ footer{background:var(--dark);border-top:1px solid rgba(165,125,212,.15);padding
   z-index: 0;
 }
 
-/* Frosted glass nav */
 nav { backdrop-filter: blur(20px) saturate(1.4); -webkit-backdrop-filter: blur(20px); }
 
-/* Blurred atmospheric circles on sections */
 .content-section { position: relative; overflow: hidden; }
 .content-section::before {
   content: '';
@@ -481,7 +498,6 @@ nav { backdrop-filter: blur(20px) saturate(1.4); -webkit-backdrop-filter: blur(2
   z-index: 0;
 }
 
-/* Washi tape grain texture */
 .cover-washi { position: relative; overflow: hidden; }
 .cover-washi::after {
   content: '';
@@ -492,22 +508,15 @@ nav { backdrop-filter: blur(20px) saturate(1.4); -webkit-backdrop-filter: blur(2
   mix-blend-mode: overlay;
 }
 
-/* Cover card glass shimmer */
 .cover-main { backdrop-filter: blur(4px) saturate(1.1); -webkit-backdrop-filter: blur(4px); }
-
-/* Soft glow on page title text */
 .page-header-title { text-shadow: 0 2px 20px rgba(0,0,0,.06); }
-
-/* Font rendering polish */
 .pc-tag, .page-header-label, .badge, .stamp-box, .sn-label, .date-month, .srw-label, .theme-toggle-label, .nb em, .art-pill, .ft-sub { -webkit-font-smoothing: antialiased; font-feature-settings: 'kern' 1; }
 .gec-big, .page-header-title, .pc-title, .conclusion-pull, .ft-logo { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
 .pc-body, .sn-body, .qa-item { font-feature-settings: 'kern' 1, 'liga' 1, 'onum' 1; -webkit-font-smoothing: antialiased; }
 
-/* Blurred depth on distant desk items */
 .item[data-depth=".03"] { filter: blur(0.3px); }
 .item[data-depth=".04"] { filter: blur(0.2px); }
 
-/* Tape glass blur */
 .tape { backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px); }
 
 @media(max-width:900px){
@@ -521,6 +530,7 @@ nav { backdrop-filter: blur(20px) saturate(1.4); -webkit-backdrop-filter: blur(2
   .split-body { grid-template-columns: 1fr; }
   .aesthetic-decor { display: none; }
   #desk { padding: 100px 20px 60px; }
+  .instructor-side { flex-direction: row; justify-content: center; }
 }
 </style>
 </head>
@@ -1049,15 +1059,34 @@ nav { backdrop-filter: blur(20px) saturate(1.4); -webkit-backdrop-filter: blur(2
       <img src="girl_thumbs_up.png" alt="A straight-haired girl giving a thumbs up" class="floating-char">
     </div>
 
+    <!-- ── TEACHING & INSTRUCTION CARD (UPDATED) ── -->
     <div class="photo-card theme-dark span-12 r5 reveal" style="grid-column: 1 / span 12;">
       <div class="pin pp" style="top:-9px;left:50%;transform:translateX(-50%)"></div>
       <div class="pc-tag pc-tag-inv">Course Structure</div>
       <h2 class="pc-title pc-title-inv">Teaching &amp; <em>Instruction</em></h2>
-      <div class="pc-body pc-body-inv">
-        <p>The progression of GE ELEC 6 was exceptionally well-structured. Starting from basic elements and moving toward complex critical analysis allowed us to build our knowledge step-by-step. The exams effectively synthesized what we learned in practical exercises, while the inclusion of documentaries like Joey Velasco's Hapag ng Pag-asa anchored those theoretical concepts into real, emotional human experiences.</p>
-        <p>Beyond the curriculum, I am forever grateful for your understanding and flexibility. As an IT student who barely gets enough sleep, I deeply appreciate how you adjusted to our situation when we needed it most—yet still held the line when you knew we could do more. You are truly a teacher I admire. When you stand in front of the class, your presence commands an authority that makes me want to listen. Every time you speak, it is obvious that you have spent countless hours mastering the material just to deliver an incredible lesson. Thank you for your dedication and for being the kind of educator who truly makes a difference.</p>
-        <div class="conclusion-pull">
-          "Thank you maam Jho for creating a space where we could safely explore our creative capabilities."
+      <div class="pc-body pc-body-inv" style="display:grid;grid-template-columns:1fr 190px;gap:32px;align-items:start;">
+        <!-- Text column -->
+        <div>
+          <p>The progression of GE ELEC 6 was exceptionally well-structured. Starting from basic elements and moving toward complex critical analysis allowed us to build our knowledge step-by-step. The exams effectively synthesized what we learned in practical exercises, while the inclusion of documentaries like Joey Velasco's Hapag ng Pag-asa anchored those theoretical concepts into real, emotional human experiences.</p>
+          <p>Beyond the curriculum, I am forever grateful for your understanding and flexibility. As an IT student who barely gets enough sleep, I deeply appreciate how you adjusted to our situation when we needed it most—yet still held the line when you knew we could do more. You are truly a teacher I admire. When you stand in front of the class, your presence commands an authority that makes me want to listen. Every time you speak, it is obvious that you have spent countless hours mastering the material just to deliver an incredible lesson. Thank you for your dedication and for being the kind of educator who truly makes a difference.</p>
+          <div class="conclusion-pull">
+            "Thank you maam Jho for creating a space where we could safely explore our creative capabilities."
+          </div>
+        </div>
+        <!-- Instructor photo column -->
+        <div style="display:flex;flex-direction:column;align-items:center;gap:12px;padding-top:4px;">
+          <div class="instructor-photo-wrap">
+            <img src="instructor.png" alt="Jhonna D. Alcantara"
+              onerror="this.style.display='none'; this.parentElement.querySelector('.instructor-fallback').style.display='flex';">
+            <div class="instructor-fallback" style="display:none;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="rgba(201,168,76,0.55)" stroke-width="1.5" width="40" height="40"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              <span style="font-family:'Kode Mono',monospace;font-size:9px;letter-spacing:2px;color:rgba(201,168,76,0.45);text-transform:uppercase;">Add Photo</span>
+            </div>
+          </div>
+          <div class="instructor-info">
+            <span class="instructor-name">Jhonna D. Alcantara</span>
+            <span class="instructor-role">Instructor I</span>
+          </div>
         </div>
       </div>
     </div>
